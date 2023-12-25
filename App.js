@@ -1,35 +1,67 @@
-import React, { useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import CameraComponent from './CameraComponent'; // Ensure this path is correct
+import styles from './styles'; // Import the styles
+import CameraComponent from './CameraComponent';
+import speak from './textToSpeech';
+import WelcomeScreen from './WelcomeScreen';
 
 const App = () => {
-  // Function to handle voice commands
-  const handleVoiceCommand = (command) => {
+    const [isWelcomeComplete, setIsWelcomeComplete] = useState(false);
+    const cameraRef = useRef(null);
+    // Function to handle voice commands
+    const handleVoiceCommand = (command) => {
     // Process and perform the action
-  };
+    console.log(command);
+    };
+  
+  // In your App.js
+    const takePicture = async () => {
+      if (cameraRef.current) {
+        let photo = await cameraRef.current.takePictureAsync({ base64: true });
+        console.log(photo.base64); // Add this line to log the base64 string
+        const base64Image = photo.base64;
 
-  // The render function
+        // Send the image to your backend
+        fetch('http://172.20.10.3:5000/process-image', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            image: base64Image
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+      // Handle the response from the backend
+      console.log(data); // Log the response from the backend
+      const description = data.choices[0].message.content;
+            speak(description); // Use the speak function
+      // Assuming the response contains the description, you can display it
+      alert("Product Description: " + description);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+      }
+    };
+
+// In the render function before return
+if (!isWelcomeComplete) {
+  return <WelcomeScreen onFinished={() => setIsWelcomeComplete(true)} />;
+  }
+
+
   return (
     <View style={styles.container}>
-      <Text>Welcome to VisionPlus</Text>
-      <CameraComponent />
+      <Text style={styles.title}>Welcome to VisionPlus</Text>
+      <CameraComponent cameraRef={cameraRef} />
       <Button
-        title="Speak Command"
-        onPress={() => handleVoiceCommand('example command')}
+        title="Take Photo"
+        onPress={takePicture}
       />
     </View>
   );
 };
-
-// StyleSheet for your components
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  // Other styles as needed
-});
-
 export default App;

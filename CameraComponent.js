@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { Camera } from 'expo-camera';
-export default function CameraComponent() {
+
+const CameraComponent = ({ cameraRef }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 
-  // Requesting for Camera Permission
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
   }, []);
@@ -23,20 +23,7 @@ export default function CameraComponent() {
   // Component UI
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Flip Camera"
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}
-          />
-        </View>
-      </Camera>
+      <Camera ref={cameraRef} style={styles.camera} type={type} />
     </View>
   );
 }
@@ -53,15 +40,24 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   buttonContainer: {
-    flex: 1,
-    margin: 20,
     position: 'absolute',
-    bottom: 40, // or any appropriate value
-    left: 0,
-    right: 0,
-    backgroundColor: 'transparent',
+    bottom: 50,
     flexDirection: 'row',
     justifyContent: 'center',
+    width: '100%',
   },
-  // ... other styles you need
+  captureButton: {
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    padding: 15,
+    paddingHorizontal: 20,
+    elevation: 2,
+  },
+  text: {
+    fontSize: 18,
+    color: '#000',
+  },
 });
+
+export default CameraComponent;
