@@ -1,0 +1,74 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "figmaguida1bff17b5_identitypool_1bff17b5",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "figmag1bff17b5",
+    "userPoolName": "figmaguida1bff17b5_userpool_1bff17b5",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email",
+      "name",
+      "phone_number"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "figmag1bff17b5_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "1bff17b5",
+    "resourceName": "figmaguida1bff17b5",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "default",
+    "usernameAttributes": [
+      "email, phone_number"
+    ],
+    "triggers": {
+      "DefineAuthChallenge": [
+        "captcha-define-challenge",
+        "boilerplate-define-challenge"
+      ],
+      "CreateAuthChallenge": [
+        "captcha-create-challenge",
+        "boilerplate-create-challenge"
+      ],
+      "VerifyAuthChallengeResponse": [
+        "captcha-verify",
+        "boilerplate-verify"
+      ],
+      "CustomMessage": [
+        "verification-link"
+      ],
+      "PostConfirmation": [
+        "add-to-group"
+      ],
+      "PreTokenGeneration": [
+        "alter-claims"
+      ]
+    },
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "verificationBucketName": "figmaguida1bff17b5verificationbucket",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

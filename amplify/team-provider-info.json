@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-figmaguida-dev-225212-authRole",
+      "UnauthRoleArn": "arn:aws:iam::670680031515:role/amplify-figmaguida-dev-225212-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::670680031515:role/amplify-figmaguida-dev-225212-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-figmaguida-dev-225212-deployment",
+      "UnauthRoleName": "amplify-figmaguida-dev-225212-unauthRole",
+      "StackName": "amplify-figmaguida-dev-225212",
+      "StackId": "arn:aws:cloudformation:us-east-2:670680031515:stack/amplify-figmaguida-dev-225212/1fc78e40-b117-11ee-a566-022137e4c1bf",
+      "AmplifyAppId": "d26yiwsdtncznh"
+    }
+  }
+}
