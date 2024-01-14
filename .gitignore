@@ -1,35 +1,80 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# Dependencies
+/node_modules
 
-# dependencies
-node_modules/
-
-# Expo
-.expo/
-dist/
-web-build/
-
-# Native
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
-.DS_Store
+# Miscellaneous
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 *.pem
 
-# local env files
-.env*.local
+# Environment
+.env
 
-# typescript
-*.tsbuildinfo
+# iOS build artifacts and related
+**/*.moved-aside
+**/*.pbxuser
+**/*.perspectivev3
+**/*.xcuserstate
+**/*.xcscmblueprint
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.DS_Store
+ios/Pods
+ios/build
+ios/DerivedData
+ios/.generated/
+
+# Android build artifacts and related
+android/.gradle
+android/app/build
+android/app/.cxx/
+android/app/src/main/assets/index.android.bundle
+android/app/src/main/assets/index.android.bundle.meta
+android/app/src/main/res/drawable-*/app_icon.png
+android/keystore.properties
+*.jks
+*.keystore
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+
+# Watchman
+.watchmanconfig
+.watchmanstate
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Ejecta
+ejecta/
+
+#amplify-do-not-edit-begin
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/logs
+amplify/mock-data
+amplify/mock-api-resources
+amplify/backend/amplify-meta.json
+amplify/backend/.temp
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplifyconfiguration.dart
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+.secret-*
+**.sample
+#amplify-do-not-edit-end
