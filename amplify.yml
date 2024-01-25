@@ -3,15 +3,15 @@ backend:
   phases:
     build:
       commands:
-        - '# Execute Amplify CLI with the helper script'
+        - "# Execute Amplify CLI with the helper script"
         - amplifyPush --simple
 frontend:
   phases:
     preBuild:
       commands:
         - npm ci
-        - nvm install 18.15.0
-        - nvm use 18.15.0
+        - nvm install 16.20.2
+        - nvm use 16.20.2
         - |-
           if [ -f yarn.lock ]; then
            yarn
@@ -22,11 +22,11 @@ frontend:
           fi
     build:
       commands:
-        - 'expo build:web'
+        - "expo build:web"
   artifacts:
     baseDirectory: web-build
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*

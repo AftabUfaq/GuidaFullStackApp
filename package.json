@@ -53,6 +53,6 @@
     "preset": "react-native"
   },
   "engines": {
-    "node": "18.15.0"
+    "node": "16.20.2"
   }
 }
