@@ -12,7 +12,16 @@ frontend:
         - nvm install 16.20.2
         - nvm use 16.20.2
         - npm install -g expo-cli # Install Expo CLI globally
-        - npm ci
+        - echo "Checking current directory and listing its contents"
+        - pwd
+        - ls -la
+        - echo "Checking for .npmrc or .yarnrc files"
+        - cat .npmrc || echo ".npmrc not found"
+        - cat .yarnrc || echo ".yarnrc not found"
+        - echo "Clearing npm cache and reinstalling dependencies"
+        - npm cache clean --force
+        - rm -rf node_modules
+        - npm install
     build:
       commands:
         - "expo build:web"
