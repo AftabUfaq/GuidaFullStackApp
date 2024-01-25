@@ -9,17 +9,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
         - nvm install 16.20.2
         - nvm use 16.20.2
-        - |-
-          if [ -f yarn.lock ]; then
-           yarn
-          elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-           npm ci
-          else
-           npm install
-          fi
+        - npm install -g expo-cli # Install Expo CLI globally
+        - npm ci
     build:
       commands:
         - "expo build:web"
