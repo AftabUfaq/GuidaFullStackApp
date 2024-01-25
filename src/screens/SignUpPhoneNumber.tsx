@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from 'react';
 import { Text, StyleSheet, Image, Pressable, View, TextInput } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { FontFamily, Color, Border, FontSize } from "../GlobalStyles";
@@ -7,7 +8,7 @@ type RootStackParamList = {
   Walkthrough: undefined;
   SignUpEmail: undefined;
   SignUpPhoneNumber: undefined; // Add this line
-  // ... other screen names
+  Verification: { phoneNumber: string };
 };
 // Define the type for the navigation prop specifically for this screen
 type SignUpPhoneNumberNavigationProp = StackNavigationProp<RootStackParamList, 'SignUpPhoneNumber'>;
@@ -17,7 +18,14 @@ type Props = {
   navigation: SignUpPhoneNumberNavigationProp;
 }
 
-const SignUpPhoneNumber:React.FC<Props> = ({ navigation }) => {
+const SignUpPhoneNumber:React.FC<Props> = () => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const navigation = useNavigation<SignUpPhoneNumberNavigationProp>();
+
+  const handleContinue = () => {
+    // Navigate to Verification screen and pass the phone number
+    navigation.navigate('Verification', { phoneNumber });
+  };
   return (
     <View style={[styles.SignUpPhoneNumber, styles.iconLayout]}>
 
@@ -29,13 +37,16 @@ const SignUpPhoneNumber:React.FC<Props> = ({ navigation }) => {
         keyboardType="default" // 'default' allows for text and numbers
         autoCapitalize="none" // Usually emails are not capitalized
         autoCorrect={false}
-        // Add any other props you need for the TextInput
+        value={phoneNumber}
+        onChangeText={setPhoneNumber} // Update the phone number state
+
       />
       </View>
 
       <View style={[styles.barsNavBarsStandard, styles.barsLayout]}>
         <Text style={styles.title}>Title</Text>
         <Text style={[styles.rightActionable, styles.textTypo]}>Sign up</Text>
+        
         <Pressable style={styles.leftActionable} onPress={() => navigation.goBack()}>
           <Image
             style={[styles.icon, styles.iconLayout]}
@@ -49,7 +60,7 @@ const SignUpPhoneNumber:React.FC<Props> = ({ navigation }) => {
         What’s your phone number?
       </Text>
       
-      <Pressable style={[styles.controlsButtons, styles.barsLayout]}onPress={() => {}}>
+      <Pressable style={[styles.controlsButtons, styles.barsLayout]}onPress={handleContinue}>
         <Text style={[styles.text, styles.textTypo]}>Continue</Text>
       </Pressable>
 

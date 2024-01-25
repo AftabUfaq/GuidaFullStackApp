@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Walkthrough from "./screens/Walkthrough";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
-
 import SignUpEmail from "./screens/SignupEmail";
 import SignUpPhoneNumber from "./screens/SignUpPhoneNumber";
+import Verification from "./screens/Verification";
+import SetupPersonalization from "./screens/SetupPersonalization";
+import { View, Text, Pressable, TouchableOpacity } from "react-native";
+
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [hideSplashScreen, setHideSplashScreen] = useState(true);
+  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
   return (
     <>
@@ -29,6 +32,16 @@ const App = () => {
             <Stack.Screen
               name="SignUpPhoneNumber"
               component={SignUpPhoneNumber}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Verification"
+              component={Verification}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SetupPersonalization"
+              component={SetupPersonalization}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
