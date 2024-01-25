@@ -24,12 +24,4 @@ frontend:
         - npm install
     build:
       commands:
-        - "expo build:web"
-  artifacts:
-    baseDirectory: web-build
-    files:
-      - "**/*"
-  cache:
-    paths:
-      - node_modules/**/*
-      - $(npm root --global)/**/*
+        - echo "No specific build steps required for the mobile app in AWS Amplify"
