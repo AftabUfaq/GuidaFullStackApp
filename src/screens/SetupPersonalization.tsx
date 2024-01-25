@@ -17,7 +17,7 @@ const SetupPersonalization = () => {
           <Image
             style={[styles.icon, styles.iconLayout]}
             resizeMode="cover"
-            source={require("../assets/left-actionable.png")}
+            source={require("../../assets/left-actionable.png")}
           />
         </Pressable>
         <View style={styles.barsNavBarsStandardChild} />
@@ -36,7 +36,7 @@ const SetupPersonalization = () => {
           <Image
             style={styles.vectorIcon}
             resizeMode="cover"
-            source={require("../assets/vector.png")}
+            source={require("../../assets/Vector.png")}
           />
         </View>
         <View style={[styles.controlsChipsRounded1, styles.controlsLayout]}>
@@ -50,14 +50,7 @@ const SetupPersonalization = () => {
           </Pressable>
         </View>
       </View>
-      <Image
-        style={[
-          styles.transparentBackgroundIcon,
-          styles.nativeHomeIndicatorPosition,
-        ]}
-        resizeMode="cover"
-        source={require("../assets/transparent-background.png")}
-      />
+
       <Pressable
         style={[styles.controlsButtons, styles.leftActionablePosition]}
         onPress={() => {}}
@@ -68,7 +61,7 @@ const SetupPersonalization = () => {
       <Image
         style={[styles.nativeHomeIndicator, styles.nativeHomeIndicatorPosition]}
         resizeMode="cover"
-        source={require("../assets/native--home-indicator.png")}
+        source={require("../../assets/home-indicator.png")}
       />
     </View>
   );
