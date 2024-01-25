@@ -10,6 +10,21 @@
       "StackName": "amplify-figmaguida-dev-225212",
       "StackId": "arn:aws:cloudformation:us-east-2:670680031515:stack/amplify-figmaguida-dev-225212/1fc78e40-b117-11ee-a566-022137e4c1bf",
       "AmplifyAppId": "d26yiwsdtncznh"
+    },
+    "categories": {
+      "auth": {
+        "figmaguida1bff17b5": {}
+      },
+      "function": {
+        "figmaguida1bff17b5CreateAuthChallenge": {
+          "deploymentBucketName": "amplify-figmaguida-dev-225212-deployment",
+          "s3Key": "amplify-builds/figmaguida1bff17b5CreateAuthChallenge-6632695a3363412b696c-build.zip"
+        },
+        "figmaguida1bff17b5DefineAuthChallenge": {
+          "deploymentBucketName": "amplify-figmaguida-dev-225212-deployment",
+          "s3Key": "amplify-builds/figmaguida1bff17b5DefineAuthChallenge-4b74582f306541634158-build.zip"
+        }
+      }
     }
   }
 }

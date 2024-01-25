@@ -1,0 +1,69 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-figmaguida-dev-225212-authRole",
+      "UnauthRoleArn": "arn:aws:iam::670680031515:role/amplify-figmaguida-dev-225212-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::670680031515:role/amplify-figmaguida-dev-225212-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-figmaguida-dev-225212-deployment",
+      "UnauthRoleName": "amplify-figmaguida-dev-225212-unauthRole",
+      "StackName": "amplify-figmaguida-dev-225212",
+      "StackId": "arn:aws:cloudformation:us-east-2:670680031515:stack/amplify-figmaguida-dev-225212/1fc78e40-b117-11ee-a566-022137e4c1bf",
+      "AmplifyAppId": "d26yiwsdtncznh"
+    }
+  },
+  "function": {
+    "figmaguida1bff17b5CreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::670680031515:role/figmaguida1bff17b5CreateAuthChallenge-dev",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:670680031515:function:figmaguida1bff17b5CreateAuthChallenge-dev",
+        "Name": "figmaguida1bff17b5CreateAuthChallenge-dev",
+        "LambdaExecutionRole": "figmaguida1bff17b5CreateAuthChallenge-dev"
+      },
+      "lastPushTimeStamp": "2024-01-25T05:59:19.038Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-figmaguida-dev-225212-deployment/amplify-cfn-templates/function/figmaguida1bff17b5CreateAuthChallenge-cloudformation-template.json",
+        "logicalId": "functionfigmaguida1bff17b5CreateAuthChallenge"
+      },
+      "lastBuildTimeStamp": "2024-01-25T05:58:09.500Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-01-25T05:58:09.586Z",
+      "distZipFilename": "figmaguida1bff17b5CreateAuthChallenge-6632695a3363412b696c-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-figmaguida-dev-225212-deployment",
+        "s3Key": "amplify-builds/figmaguida1bff17b5CreateAuthChallenge-6632695a3363412b696c-build.zip"
+      },
+      "lastPushDirHash": "E7+XI5siNpE8/SloJPrn10MGYCo="
+    },
+    "figmaguida1bff17b5DefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::670680031515:role/figmaguida1bff17b5DefineAuthChallenge-dev",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:670680031515:function:figmaguida1bff17b5DefineAuthChallenge-dev",
+        "Name": "figmaguida1bff17b5DefineAuthChallenge-dev",
+        "LambdaExecutionRole": "figmaguida1bff17b5DefineAuthChallenge-dev"
+      },
+      "lastPushTimeStamp": "2024-01-25T05:59:19.038Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-figmaguida-dev-225212-deployment/amplify-cfn-templates/function/figmaguida1bff17b5DefineAuthChallenge-cloudformation-template.json",
+        "logicalId": "functionfigmaguida1bff17b5DefineAuthChallenge"
+      },
+      "lastBuildTimeStamp": "2024-01-25T05:58:12.285Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-01-25T05:58:12.348Z",
+      "distZipFilename": "figmaguida1bff17b5DefineAuthChallenge-4b74582f306541634158-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-figmaguida-dev-225212-deployment",
+        "s3Key": "amplify-builds/figmaguida1bff17b5DefineAuthChallenge-4b74582f306541634158-build.zip"
+      },
+      "lastPushDirHash": "UW1ojLW8Nvm68AoT9Z+72ZBKH5U="
+    }
+  }
+}
