@@ -1,4 +1,43 @@
 {
+  "auth": {
+    "figmaguida30b7534f": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "figmaguida30b7534fPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL",
+          "PHONE_NUMBER"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
   "function": {
     "figmaguida1bff17b5CreateAuthChallenge": {
       "build": true,
@@ -6,6 +45,11 @@
       "service": "Lambda"
     },
     "figmaguida1bff17b5DefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "figmaguida30b7534fPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -41,6 +85,14 @@
         {
           "category": "function",
           "resourceName": "figmaguida1bff17b5DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_figmaguida30b7534fPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "figmaguida30b7534fPostConfirmation"
         }
       ]
     }
