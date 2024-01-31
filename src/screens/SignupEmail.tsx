@@ -1,5 +1,6 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Image, Pressable,TextInput } from "react-native";
+import { useState,useCallback } from "react";
+import { StyleSheet, View, Text, Image, Pressable,TextInput, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Border, Color, FontSize, FontFamily } from "../GlobalStyles";
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -8,6 +9,7 @@ type RootStackParamList = {
   Walkthrough: undefined;
   SignUpEmail: undefined;
   SignUpPhoneNumber: undefined; // Add this line
+  ChoosePassword: { email: string };
   // ... other screen names
 };
 // Define the type for the navigation prop specifically for this screen
@@ -17,8 +19,36 @@ type SignUpEmailNavigationProp = StackNavigationProp<RootStackParamList, 'SignUp
 type Props = {
   navigation: SignUpEmailNavigationProp;
 }
+const SignUpEmail: React.FC<Props> = ({ navigation }) => {
+  const [email, setEmail] = useState('');
 
-const SignUpEmail:React.FC<Props> = ({ navigation }) => {
+  const validateAndProceed = async (emailToValidate: string) => {
+
+    try {
+      const response = await fetch('https://6xryin6ylh.execute-api.us-east-2.amazonaws.com/dev/ValidateEmailAddress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: emailToValidate }),
+      });
+
+      const result = await response.json();
+
+      if (result.isValid) {
+        navigation.navigate('ChoosePassword', { email: emailToValidate });
+      } else {
+        Alert.alert('Invalid Email', 'Please enter a valid email address.');
+      }
+    } catch (error) {
+      Alert.alert('Error', 'An error occurred during email validation.');
+      console.error('Error validating email:', error);
+    }
+  };
+
+  const handleContinue = () => {
+    validateAndProceed(email);
+  };
 
   return (
     <View style={[styles.signUpEmail, styles.iconLayout]}>
@@ -31,6 +61,7 @@ const SignUpEmail:React.FC<Props> = ({ navigation }) => {
         keyboardType="default" // 'default' allows for text and numbers
         autoCapitalize="none" // Usually emails are not capitalized
         autoCorrect={false}
+        onChangeText={(text) => setEmail(text)}
         // Add any other props you need for the TextInput
       />
       </View>
@@ -50,7 +81,7 @@ const SignUpEmail:React.FC<Props> = ({ navigation }) => {
       <Text style={[styles.whatsYourEmail, styles.whatsYourEmailLayout]}>
         What’s your email address?
       </Text>
-      <Pressable style={styles.controlsButtons} onPress={() => navigation.navigate('SignUpPhoneNumber')}>
+      <Pressable style={styles.controlsButtons} onPress={handleContinue}>
         <Text style={[styles.text, styles.textTypo]}>Continue</Text>
       </Pressable>
 

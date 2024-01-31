@@ -9,6 +9,7 @@ type RootStackParamList = {
   SignUpEmail: undefined;
   SignUpPhoneNumber: undefined; // Add this line
   Verification: { phoneNumber: string };
+  ChoosePassword: { email?: string; phoneNumber?: string }; // Updated line
 };
 // Define the type for the navigation prop specifically for this screen
 type SignUpPhoneNumberNavigationProp = StackNavigationProp<RootStackParamList, 'SignUpPhoneNumber'>;
@@ -24,7 +25,7 @@ const SignUpPhoneNumber:React.FC<Props> = () => {
 
   const handleContinue = () => {
     // Navigate to Verification screen and pass the phone number
-    navigation.navigate('Verification', { phoneNumber });
+    navigation.navigate('ChoosePassword', { phoneNumber });
   };
   return (
     <View style={[styles.SignUpPhoneNumber, styles.iconLayout]}>

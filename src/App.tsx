@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Walkthrough from "./screens/Walkthrough";
 import SignUpEmail from "./screens/SignupEmail";
 import SignUpPhoneNumber from "./screens/SignUpPhoneNumber";
+import ChoosePassword from './screens/ChoosePassword';
 import Verification from "./screens/Verification";
 import SetupPersonalization from "./screens/SetupPersonalization";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
@@ -37,6 +38,11 @@ const App = () => {
             <Stack.Screen
               name="Verification"
               component={Verification}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ChoosePassword"
+              component={ChoosePassword}
               options={{ headerShown: false }}
             />
             <Stack.Screen
