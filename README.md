@@ -23,4 +23,4 @@ The Guida Core Functionality repository houses the primary engine behind the Gui
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/<your-username>/guida-core.git
+git clone https://github.com/yzhangtj/GuidaFullStackApp.git
