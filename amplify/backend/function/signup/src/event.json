@@ -1,0 +1,11 @@
+{
+  "statusCode": 200,
+  "body": {
+    "username": "Test1",
+    "password": "Pw1234567890.",
+    "attributes": [
+      {"name": "email", "value": "GuidaFullStackTest@gmail.com"},
+      {"name": "given_name", "value": "Alice"}
+    ]
+  }
+}

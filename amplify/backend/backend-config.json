@@ -1,0 +1,10 @@
+{
+  "function": {
+    "signup": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
+}
