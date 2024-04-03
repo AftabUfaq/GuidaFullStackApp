@@ -13,7 +13,10 @@
     },
     "categories": {
       "function": {
-        "signup": {}
+        "signup": {
+          "deploymentBucketName": "amplify-guidafullstackapp-dev-41451-deployment",
+          "s3Key": "amplify-builds/signup-4e4b306e374735434139-build.zip"
+        }
       }
     }
   }
