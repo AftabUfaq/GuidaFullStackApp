@@ -1,9 +1,16 @@
 import * as React from "react";
-import { useState } from 'react';
-import { Text, StyleSheet, Image, Pressable, View, TextInput } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useState } from "react";
+import {
+  Text,
+  StyleSheet,
+  Image,
+  Pressable,
+  View,
+  TextInput,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { FontFamily, Color, Border, FontSize } from "../GlobalStyles";
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp } from "@react-navigation/stack";
 type RootStackParamList = {
   Walkthrough: undefined;
   SignUpEmail: undefined;
@@ -12,43 +19,46 @@ type RootStackParamList = {
   ChoosePassword: { email?: string; phoneNumber?: string }; // Updated line
 };
 // Define the type for the navigation prop specifically for this screen
-type SignUpPhoneNumberNavigationProp = StackNavigationProp<RootStackParamList, 'SignUpPhoneNumber'>;
+type SignUpPhoneNumberNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "SignUpPhoneNumber"
+>;
 
 // Define the props for the SignUpEmail component
 type Props = {
   navigation: SignUpPhoneNumberNavigationProp;
-}
+};
 
-const SignUpPhoneNumber:React.FC<Props> = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
+const SignUpPhoneNumber: React.FC<Props> = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
   const navigation = useNavigation<SignUpPhoneNumberNavigationProp>();
 
   const handleContinue = () => {
     // Navigate to Verification screen and pass the phone number
-    navigation.navigate('ChoosePassword', { phoneNumber });
+    navigation.navigate("ChoosePassword", { phoneNumber });
   };
   return (
     <View style={[styles.SignUpPhoneNumber, styles.iconLayout]}>
-
       <View style={[styles.controlsTextFields, styles.fieldLayout]}>
-        
         <TextInput
-        style={styles.input}
-        placeholder="Enter your phone number"
-        keyboardType="default" // 'default' allows for text and numbers
-        autoCapitalize="none" // Usually emails are not capitalized
-        autoCorrect={false}
-        value={phoneNumber}
-        onChangeText={setPhoneNumber} // Update the phone number state
-
-      />
+          style={styles.input}
+          placeholder="Enter your phone number"
+          keyboardType="default" // 'default' allows for text and numbers
+          autoCapitalize="none" // Usually emails are not capitalized
+          autoCorrect={false}
+          value={phoneNumber}
+          onChangeText={setPhoneNumber} // Update the phone number state
+        />
       </View>
 
       <View style={[styles.barsNavBarsStandard, styles.barsLayout]}>
         <Text style={styles.title}>Title</Text>
         <Text style={[styles.rightActionable, styles.textTypo]}>Sign up</Text>
-        
-        <Pressable style={styles.leftActionable} onPress={() => navigation.goBack()}>
+
+        <Pressable
+          style={styles.leftActionable}
+          onPress={() => navigation.goBack()}
+        >
           <Image
             style={[styles.icon, styles.iconLayout]}
             resizeMode="cover"
@@ -60,23 +70,24 @@ const SignUpPhoneNumber:React.FC<Props> = () => {
       <Text style={[styles.whatsYourPhone, styles.whatsYourPhonePosition]}>
         What’s your phone number?
       </Text>
-      
-      <Pressable style={[styles.controlsButtons, styles.barsLayout]}onPress={handleContinue}>
+
+      <Pressable
+        style={[styles.controlsButtons, styles.barsLayout]}
+        onPress={handleContinue}
+      >
         <Text style={[styles.text, styles.textTypo]}>Continue</Text>
       </Pressable>
 
       <View style={[styles.viewsProgressBars, styles.indicatorLayout]}>
         <View style={[styles.indicator, styles.indicatorLayout]} />
       </View>
-      
+
       <View style={[styles.nativeStatusBar, styles.barsPosition]} />
-      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-
   iconLayout: {
     width: "100%",
     overflow: "hidden",
@@ -92,7 +103,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   input: {
-    borderColor: '#000', // Set the border color to match the design
+    borderColor: "#000", // Set the border color to match the design
     borderWidth: 1,
     borderRadius: 5, // Use the same border radius as your design
     padding: 10, // Add padding to match the design
@@ -100,9 +111,9 @@ const styles = StyleSheet.create({
     fontSize: 16, // Set the font size as needed
     fontFamily: FontFamily.regularNoneMedium, // Set the font family as needed
     color: Color.inkDarkest, // Set the text color as needed
-    width: '90%', // Set the width to match the design
-    alignSelf: 'center', // Center align the text input
-    height:48,
+    width: "90%", // Set the width to match the design
+    alignSelf: "center", // Center align the text input
+    height: 48,
   },
   whatsYourPhonePosition: {
     width: 327,
@@ -117,7 +128,7 @@ const styles = StyleSheet.create({
   fieldLayout: {
     borderRadius: Border.br_5xs,
     position: "absolute",
-    left:-1,
+    left: -1,
     right: -1,
   },
   title: {

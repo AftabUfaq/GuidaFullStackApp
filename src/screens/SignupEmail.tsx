@@ -1,9 +1,17 @@
 import * as React from "react";
-import { useState,useCallback } from "react";
-import { StyleSheet, View, Text, Image, Pressable,TextInput, Alert } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useState, useCallback } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Pressable,
+  TextInput,
+  Alert,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Border, Color, FontSize, FontFamily } from "../GlobalStyles";
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp } from "@react-navigation/stack";
 
 type RootStackParamList = {
   Walkthrough: undefined;
@@ -13,36 +21,41 @@ type RootStackParamList = {
   // ... other screen names
 };
 // Define the type for the navigation prop specifically for this screen
-type SignUpEmailNavigationProp = StackNavigationProp<RootStackParamList, 'SignUpEmail'>;
+type SignUpEmailNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "SignUpEmail"
+>;
 
 // Define the props for the SignUpEmail component
 type Props = {
   navigation: SignUpEmailNavigationProp;
-}
+};
 const SignUpEmail: React.FC<Props> = ({ navigation }) => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const validateAndProceed = async (emailToValidate: string) => {
-
     try {
-      const response = await fetch('https://6xryin6ylh.execute-api.us-east-2.amazonaws.com/dev/ValidateEmailAddress', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: emailToValidate }),
-      });
+      const response = await fetch(
+        "https://6xryin6ylh.execute-api.us-east-2.amazonaws.com/dev/ValidateEmailAddress",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: emailToValidate }),
+        }
+      );
 
       const result = await response.json();
 
       if (result.isValid) {
-        navigation.navigate('ChoosePassword', { email: emailToValidate });
+        navigation.navigate("ChoosePassword", { email: emailToValidate });
       } else {
-        Alert.alert('Invalid Email', 'Please enter a valid email address.');
+        Alert.alert("Invalid Email", "Please enter a valid email address.");
       }
     } catch (error) {
-      Alert.alert('Error', 'An error occurred during email validation.');
-      console.error('Error validating email:', error);
+      Alert.alert("Error", "An error occurred during email validation.");
+      console.error("Error validating email:", error);
     }
   };
 
@@ -52,24 +65,25 @@ const SignUpEmail: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={[styles.signUpEmail, styles.iconLayout]}>
-      
       <View style={[styles.controlsTextFields, styles.fieldLayout]}>
-        
         <TextInput
-        style={styles.input}
-        placeholder="Enter your email"
-        keyboardType="default" // 'default' allows for text and numbers
-        autoCapitalize="none" // Usually emails are not capitalized
-        autoCorrect={false}
-        onChangeText={(text) => setEmail(text)}
-        // Add any other props you need for the TextInput
-      />
+          style={styles.input}
+          placeholder="Enter your email"
+          keyboardType="default" // 'default' allows for text and numbers
+          autoCapitalize="none" // Usually emails are not capitalized
+          autoCorrect={false}
+          onChangeText={(text) => setEmail(text)}
+          // Add any other props you need for the TextInput
+        />
       </View>
 
       <View style={[styles.barsNavBarsStandard, styles.barsPosition]}>
         <Text style={styles.title}>Title</Text>
         <Text style={styles.rightActionable}>Sign up</Text>
-        <Pressable style={styles.leftActionable} onPress={() => navigation.goBack()}>
+        <Pressable
+          style={styles.leftActionable}
+          onPress={() => navigation.goBack()}
+        >
           <Image
             style={[styles.icon, styles.iconLayout]}
             resizeMode="cover"
@@ -88,7 +102,6 @@ const SignUpEmail: React.FC<Props> = ({ navigation }) => {
       <View style={[styles.viewsProgressBars, styles.indicatorLayout]}>
         <View style={[styles.indicator, styles.indicatorLayout]} />
       </View>
-
     </View>
   );
 };
@@ -101,7 +114,7 @@ const styles = StyleSheet.create({
   fieldLayout: {
     borderRadius: Border.br_5xs,
     position: "absolute",
-    left:-1,
+    left: -1,
     right: -1,
   },
   barsPosition: {
@@ -123,7 +136,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   input: {
-    borderColor: '#000', // Set the border color to match the design
+    borderColor: "#000", // Set the border color to match the design
     borderWidth: 1,
     borderRadius: 5, // Use the same border radius as your design
     padding: 10, // Add padding to match the design
@@ -131,15 +144,15 @@ const styles = StyleSheet.create({
     fontSize: 16, // Set the font size as needed
     fontFamily: FontFamily.regularNoneMedium, // Set the font family as needed
     color: Color.inkDarkest, // Set the text color as needed
-    width: '90%', // Set the width to match the design
-    alignSelf: 'center', // Center align the text input
-    height:48,
+    width: "90%", // Set the width to match the design
+    alignSelf: "center", // Center align the text input
+    height: 48,
   },
   indicatorLayout: {
     borderRadius: Border.br_81xl,
     position: "absolute",
   },
-  
+
   controlsTextFields: {
     top: 194,
     left: 24,

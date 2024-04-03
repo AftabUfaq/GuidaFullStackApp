@@ -30,23 +30,20 @@ const ChoosePassword = () => {
     // Send the email/phone number and password to your backend
     try {
       // Example: POST request to your backend
-      const response = await fetch('https://6xryin6ylh.execute-api.us-east-2.amazonaws.com/dev/ValidateEmailAddress', {
+      fetch('https://6xryin6ylh.execute-api.us-east-2.amazonaws.com/dev/ValidateEmailAddress', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, phoneNumber, password }),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        // Navigate to the next screen or perform successful registration actions
-        //navigation.navigate('YourNextScreen');
-        Alert.alert('Registration Success', result.message);
-      } else {
-        // Handle registration errors (e.g., user already exists)
-        Alert.alert('Registration Error', result.message);
-      }
+      }).then((data) =>  data.json())
+      .then((result) => {
+        Alert.alert('Registration Success', JSON.stringify(result));
+      }).catch((err) => {
+        Alert.alert('Network Error', 'Unable to register. Please try again later.');
+      console.error('Registration error:', err);
+      })
+     
     } catch (error) {
       // Handle network errors or show a generic error message
       Alert.alert('Network Error', 'Unable to register. Please try again later.');

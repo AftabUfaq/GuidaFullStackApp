@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Walkthrough from "./screens/Walkthrough";
-import SignUpEmail from "./screens/SignupEmail";
-import SignUpPhoneNumber from "./screens/SignUpPhoneNumber";
+import React from 'react';
 import ChoosePassword from './screens/ChoosePassword';
-import Verification from "./screens/Verification";
 import SetupPersonalization from "./screens/SetupPersonalization";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import SignUpPhoneNumber from "./screens/SignUpPhoneNumber";
+import SignUpEmail from "./screens/SignupEmail";
+import Verification from "./screens/Verification";
+import Walkthrough from "./screens/Walkthrough";
 
 
 const Stack = createNativeStackNavigator();
